@@ -1,0 +1,31 @@
+category,prompt,max_tokens,temperature
+short,¿Qué es la fotosíntesis?,200,0.7
+short,Define inteligencia artificial en una frase,150,0.5
+short,¿Cuál es la capital de Japón?,100,0.3
+short,Traduce 'Hello World' al español,100,0.3
+medium,Explica las ventajas y desventajas de usar microservicios versus arquitectura monolítica,500,0.7
+medium,Analiza este código y sugiere mejoras: def process(data): return [x*2 for x in data if x > 0],400,0.8
+medium,¿Cuáles son las mejores prácticas para optimizar consultas SQL en bases de datos relacionales?,600,0.7
+medium,Compara Python vs Java para desarrollo de aplicaciones empresariales,450,0.7
+medium,Explica el patrón de diseño Observer con un ejemplo práctico,500,0.7
+long,Crea una API REST en Java con Spring Boot para gestionar usuarios incluyendo CRUD completo con autenticación JWT validaciones manejo de errores y documentación Swagger,2000,0.8
+long,Diseña una arquitectura de microservicios para un sistema de e-commerce con 1 millón de usuarios incluyendo componentes principales patrones de comunicación y estrategias de escalabilidad,1800,0.8
+long,Desarrolla un plan completo de migración de una aplicación monolítica legacy a microservicios considerando riesgos estrategia de datos y fases de implementación,2000,0.7
+long,Explica cómo implementar un sistema de cache distribuido con Redis incluyendo estrategias de invalidación patrones de diseño y manejo de consistencia eventual,1500,0.8
+contextual,Basándote en las mejores prácticas de DevOps explica cómo implementar CI/CD para una aplicación con múltiples microservicios,800,0.7
+contextual,Considerando los principios SOLID analiza este diseño de clases y propón refactorizaciones,700,0.8
+contextual,Teniendo en cuenta la escalabilidad y performance sugiere optimizaciones para una API que procesa 10000 requests por segundo,900,0.7
+code_generation,Escribe una función en Python que valide si un email es válido usando expresiones regulares,300,0.5
+code_generation,Crea un componente React con hooks para un formulario de login con validación,600,0.7
+code_generation,Implementa un algoritmo de búsqueda binaria en Java con comentarios explicativos,400,0.5
+code_generation,Genera un script de bash que haga backup automatizado de una base de datos PostgreSQL,500,0.6
+analysis,Analiza los posibles cuellos de botella en una arquitectura de tres capas con 5000 usuarios concurrentes,800,0.7
+analysis,Evalúa los riesgos de seguridad en una API pública sin rate limiting ni autenticación,700,0.8
+analysis,Revisa este diseño de base de datos y sugiere normalizaciones o desnormalizaciones necesarias,600,0.7
+troubleshooting,Mi aplicación Java tiene un memory leak y el heap crece constantemente hasta OutOfMemoryError ¿cómo diagnostico y soluciono esto?,1000,0.7
+troubleshooting,La base de datos MySQL está muy lenta en consultas con JOINs ¿qué índices debería crear?,600,0.7
+troubleshooting,Recibo errores 502 Bad Gateway intermitentes en mi API ¿cuáles son las posibles causas y soluciones?,800,0.7
+documentation,Genera documentación técnica para una función que procesa pagos con tarjeta de crédito incluyendo parámetros excepciones y ejemplos,700,0.6
+documentation,Crea un README completo para un proyecto de microservicios incluyendo arquitectura setup y guía de desarrollo,1200,0.7
+creative,Propón nombres creativos para una startup de análisis de datos con IA,200,1.0
+creative,Genera un eslogan para una app de fitness que usa gamificación,150,0.9
