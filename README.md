@@ -1,4 +1,4 @@
-# Cómo Hacer Pruebas de Rendimiento a APIs de LLM: Guía Práctica con Gatling
+# Cómo Hacer Pruebas de Rendimiento a APIs de LLM: Guía Práctica con Gatling - Rodrigo Campos - Performance Test Engineer 
 
 ## ¿Por qué necesitas probar el rendimiento de tu API de LLM?
 
@@ -428,4 +428,7 @@ Con Gatling y este enfoque, puedes:
 
 ---
 
-**#PerformanceTesting #LoadTesting #LLM #ChatGPT #Gatling #QA #SoftwareTesting #AI #MachineLearning #DevOps**
+### Propiedad y Derechos de Autor
+Este código es propiedad de Rodrigo Campos (Dontester). Todos los derechos de autor están reservados por Rodrigo Campos.
+
+© Rodrigo Campos (Dontester)
