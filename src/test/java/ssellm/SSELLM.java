@@ -168,7 +168,7 @@ public class SSELLM extends Simulation {
 
     {
         setUp(prompt.injectOpen(
-            rampUsers(10).during(10), // Ajusta usuarios y duración según necesidad
+            rampUsers(10).during(10), // Ajusta usuarios y duración según necesidad, durante 10 Segundos los suben a 10 usuarios,
             constantUsersPerSec(10).during(60)) // Mantener 10 usuarios por segundo durante 60 Segundos,
             ).protocols(httpProtocol);
     }
