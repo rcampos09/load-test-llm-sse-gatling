@@ -1,4 +1,38 @@
-# Cómo Hacer Pruebas de Rendimiento a APIs de LLM: Guía Práctica con Gatling - Rodrigo Campos - Performance Test Engineer 
+# Load Testing de LLMs con Análisis de Consistencia
+
+**Proyecto de investigación aplicada sobre performance y quality testing de APIs LLM con Server-Sent Events (SSE)**
+
+**Autor**: Ricardo Campos | **Estado**: Sprint 1 ✅ Completado | **Fecha**: Octubre 2025
+
+---
+
+## 📚 Documentación Completa
+
+**Toda la documentación técnica, análisis y experimentos está organizada en:**
+
+👉 **[/docs](docs/README.md)** - Índice completo de documentación
+
+### Documentos destacados:
+
+- **[Sprint 1: Artículo de Consistencia](docs/sprint1/consistency-article.md)** - Análisis exhaustivo de 1,048 líneas sobre hallazgos y aprendizajes
+- **[Sprint 1: Guía Completa](docs/sprint1/README.md)** - Cómo replicar el experimento
+- **[Análisis del Gap SSE en Gatling](docs/sprint1/experiments/gatling-sse-analysis-en.md)** - Investigación técnica sobre medición SSE
+- **[Sprint 2: Roadmap](docs/sprint2/README.md)** - Plan de herramientas avanzadas (embeddings, LLM-as-judge)
+
+---
+
+## 🚀 Quick Start: ¿Qué es este proyecto?
+
+Este proyecto implementa un **sistema de análisis de consistencia** para respuestas LLM bajo carga, detectando:
+
+✅ **47.5% de respuestas truncadas** (que habrían pasado como HTTP 200 OK)
+✅ **Gap de +403%** en medición Gatling vs latencia real del usuario
+✅ **Degradación de +775%** bajo carga sostenida (RAMP → STEADY)
+✅ **70% de falla** en prompts largos vs 8% en prompts cortos
+
+**Costo del experimento**: $0.30 por 610 requests
+
+---
 
 ## ¿Por qué necesitas probar el rendimiento de tu API de LLM?
 

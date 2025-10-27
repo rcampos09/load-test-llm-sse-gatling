@@ -18,6 +18,7 @@ buildNumber.properties
 REPO_HOME/
 repo/
 repository/
+${env.REPO_HOME}/
 
 # Gatling
 results/
