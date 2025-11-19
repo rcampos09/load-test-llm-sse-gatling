@@ -67,6 +67,10 @@ public class ResponseMetadata {
     @JsonProperty("test_phase")
     private String testPhase;  // RAMP, STEADY
 
+    // Sprint 2: Track timeout used for this request
+    @JsonProperty("timeout_used_ms")
+    private long timeoutUsedMs;
+
     // Constructors
     public ResponseMetadata() {
         this.truncated = false;
@@ -151,6 +155,11 @@ public class ResponseMetadata {
 
         public Builder testPhase(String testPhase) {
             metadata.testPhase = testPhase;
+            return this;
+        }
+
+        public Builder timeoutUsedMs(long timeoutUsedMs) {
+            metadata.timeoutUsedMs = timeoutUsedMs;
             return this;
         }
 
@@ -292,10 +301,18 @@ public class ResponseMetadata {
         this.testPhase = testPhase;
     }
 
+    public long getTimeoutUsedMs() {
+        return timeoutUsedMs;
+    }
+
+    public void setTimeoutUsedMs(long timeoutUsedMs) {
+        this.timeoutUsedMs = timeoutUsedMs;
+    }
+
     @Override
     public String toString() {
         return String.format("ResponseMetadata{sessionId='%s', category='%s', prompt='%s', " +
-                "responseTime=%dms, ttft=%dms, chunks=%d, truncated=%s, phase=%s}",
-                sessionId, category, prompt, responseTimeMs, ttftMs, totalChunks, truncated, testPhase);
+                "responseTime=%dms, ttft=%dms, chunks=%d, truncated=%s, phase=%s, timeout=%dms}",
+                sessionId, category, prompt, responseTimeMs, ttftMs, totalChunks, truncated, testPhase, timeoutUsedMs);
     }
 }

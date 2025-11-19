@@ -35,6 +35,40 @@ public class SSELLM extends Simulation {
     long testStartTime = System.currentTimeMillis();
     long rampDuration = 10000; // 10 seconds ramp phase
 
+    /**
+     * Get timeout in milliseconds based on prompt category
+     * Sprint 2: Dynamic timeouts to reduce truncation from 47.5% to <10%
+     *
+     * @param category Prompt category (short, medium, long, etc.)
+     * @return Timeout in milliseconds
+     */
+    private long getTimeoutForCategory(String category) {
+        if (category == null) {
+            return 10000; // Default 10s fallback
+        }
+
+        switch (category.toLowerCase()) {
+            case "short":
+            case "creative":
+                return 5000;  // 5 seconds - Quick responses expected
+
+            case "medium":
+            case "code_generation":
+            case "analysis":
+                return 12000; // 12 seconds - Moderate complexity
+
+            case "long":
+            case "contextual":
+            case "troubleshooting":
+            case "documentation":
+                return 20000; // 20 seconds - Complex responses
+
+            default:
+                System.out.println("⚠️ Unknown category '" + category + "', using default 10s timeout");
+                return 10000; // 10s fallback for unknown categories
+        }
+    }
+
     // Initialize files at simulation start
     {
         try {
@@ -178,10 +212,14 @@ public class SSELLM extends Simulation {
                             updatedSession = updatedSession.set("chunkId", chunkIdHolder[0]);
                         }
 
-                        // Timeout detection (max 10 seconds per request)
+                        // Sprint 2: Dynamic timeout detection based on category
                         long currentTime = System.currentTimeMillis();
                         long elapsed = currentTime - requestStartTime;
-                        boolean timedOut = elapsed > 10000;
+
+                        // Get category BEFORE timeout check (needed for dynamic timeout)
+                        String category = updatedSession.getString("category");
+                        long categoryTimeout = getTimeoutForCategory(category);
+                        boolean timedOut = elapsed > categoryTimeout;
 
                         // If done or timeout, save complete response
                         if (done || timedOut) {
@@ -189,10 +227,12 @@ public class SSELLM extends Simulation {
                             long responseTimeMs = currentTime - requestStartTime;
 
                             System.out.println("\n📝 Complete LLM Response: " + fullResponse);
+                            if (timedOut) {
+                                System.out.println("⚠️ TIMEOUT after " + elapsed + "ms (limit: " + categoryTimeout + "ms for category: " + category + ")");
+                            }
 
                             // Get information from session
                             String sessionId = updatedSession.userId() + "-" + updatedSession.scenario();
-                            String category = updatedSession.getString("category");
                             String prompt = updatedSession.getString("prompt");
                             int maxTokens = Integer.parseInt(updatedSession.getString("max_tokens"));
                             double temperature = Double.parseDouble(updatedSession.getString("temperature"));
@@ -226,6 +266,7 @@ public class SSELLM extends Simulation {
                                 .truncated(truncated)
                                 .truncationReason(truncationReason)
                                 .testPhase(testPhase)
+                                .timeoutUsedMs(categoryTimeout)  // Sprint 2: Track timeout used
                                 .build();
 
                             // Save structured metadata as JSONL
